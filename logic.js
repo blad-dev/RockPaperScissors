@@ -36,4 +36,17 @@ function getHumanChoice() {
 function onlyWithFirstLetterCapitalized(string) {
   return string.slice(0, 1).toUpperCase() + string.slice(1).toLowerCase();
 }
+
+function isATie(firstChoice, secondChoice){
+  return firstChoice === secondChoice;
+}
+function didFirstWin(firstChoice, secondChoice) {
+  if (isATie(firstChoice, secondChoice)) return false;
+
+  return (
+    (firstChoice === 'rock' && secondChoice === 'scissors') ||
+    (firstChoice === 'paper' && secondChoice === 'rock') ||
+    (firstChoice === 'scissors' && secondChoice === 'paper')
+  );
+}
 console.log(getHumanChoice());
