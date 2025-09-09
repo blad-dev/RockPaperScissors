@@ -32,4 +32,8 @@ function getHumanChoice() {
   }
   return input;
 }
+
+function onlyWithFirstLetterCapitalized(string) {
+  return string.slice(0, 1).toUpperCase() + string.slice(1).toLowerCase();
+}
 console.log(getHumanChoice());
