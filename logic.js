@@ -49,4 +49,23 @@ function didFirstWin(firstChoice, secondChoice) {
     (firstChoice === 'scissors' && secondChoice === 'paper')
   );
 }
-console.log(getHumanChoice());
+
+let humanScore = 0;
+let computerScore = 0;
+
+function playRound(humanChoice, computerChoice) {
+  const outputHumanChoice = onlyWithFirstLetterCapitalized(humanChoice);
+  const outputComputerChoice = onlyWithFirstLetterCapitalized(computerChoice);
+
+  if (isATie(humanChoice, computerChoice)) {
+    console.log(`A tie, ${outputHumanChoice} is equal to the ${outputComputerChoice}`);
+  } else if (didFirstWin(humanChoice, computerChoice)) {
+    console.log(`You win! ${outputHumanChoice} beats ${outputComputerChoice}!`);
+    ++humanScore;
+  } else if (didFirstWin(computerChoice, humanChoice)) {
+    console.log(`You lose! ${outputComputerChoice} beats ${outputHumanChoice}!`);
+    ++computerScore;
+  }
+}
+
+playRound(getHumanChoice(), getComputerChoice());
