@@ -55,6 +55,18 @@ function didFirstWin(firstChoice, secondChoice) {
 let humanScore = 0;
 let computerScore = 0;
 
+function correctBeatOrBeats(choice) {
+  switch (choice) {
+    case 'rock':
+    case 'paper':
+      return 'beats';
+    case 'scissors':
+      return 'beat';
+    default:
+      throw Error(`Provided choice is invalid: ${choice}`);
+  }
+}
+
 function playRound(humanChoice, computerChoice) {
   const outputHumanChoice = onlyWithFirstLetterCapitalized(humanChoice);
   const outputComputerChoice = onlyWithFirstLetterCapitalized(computerChoice);
@@ -62,10 +74,12 @@ function playRound(humanChoice, computerChoice) {
   if (isATie(humanChoice, computerChoice)) {
     console.log(`A tie, ${outputHumanChoice} is equal to the ${outputComputerChoice}`);
   } else if (didFirstWin(humanChoice, computerChoice)) {
-    console.log(`You win! ${outputHumanChoice} beats ${outputComputerChoice}!`);
+    const beatBeats = correctBeatOrBeats(humanChoice);
+    console.log(`You win! ${outputHumanChoice} ${beatBeats} ${outputComputerChoice}!`);
     ++humanScore;
   } else if (didFirstWin(computerChoice, humanChoice)) {
-    console.log(`You lose! ${outputComputerChoice} beats ${outputHumanChoice}!`);
+    const beatBeats = correctBeatOrBeats(computerChoice);
+    console.log(`You lose! ${outputComputerChoice} ${beatBeats} ${outputHumanChoice}!`);
     ++computerScore;
   }
 }
