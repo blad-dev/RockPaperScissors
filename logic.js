@@ -23,9 +23,11 @@ function getHumanChoice() {
   legalInput['rock'] = true;
   legalInput['paper'] = true;
   legalInput['scissors'] = true;
-  const getInput = () => prompt('Enter your move, please (rock, paper, scissors)');
+  const getInput = () => prompt('Enter your move, please (rock, paper, scissors)').toLowerCase();
   const getInputAfterInvalid = () =>
-    prompt('Your move is illegal, please, enter a legal move (rock, paper, scissors)');
+    prompt(
+      'Your move is illegal, please, enter a legal move (rock, paper, scissors)'
+    ).toLowerCase();
   let input = getInput();
   while (!legalInput[input]) {
     input = getInputAfterInvalid();
