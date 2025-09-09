@@ -17,4 +17,19 @@ function getComputerChoice() {
       throw RangeError(`Get random value out of range: ${randomOption}`);
   }
 }
-console.log(getComputerChoice());
+
+function getHumanChoice() {
+  const legalInput = [];
+  legalInput['rock'] = true;
+  legalInput['paper'] = true;
+  legalInput['scissors'] = true;
+  const getInput = () => prompt('Enter your move, please (rock, paper, scissors)');
+  const getInputAfterInvalid = () =>
+    prompt('Your move is illegal, please, enter a legal move (rock, paper, scissors)');
+  let input = getInput();
+  while (!legalInput[input]) {
+    input = getInputAfterInvalid();
+  }
+  return input;
+}
+console.log(getHumanChoice());
